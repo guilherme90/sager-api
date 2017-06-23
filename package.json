@@ -1,0 +1,45 @@
+{
+  "name": "sager",
+  "version": "1.0.0",
+  "description": "API Sager",
+  "main": "app.js",
+  "private": true,
+  "config": {
+    "port": 8010
+  },
+  "scripts": {
+    "start": "set DEBUG=http & nodemon index.js",
+    "test": "mocha"
+  },
+  "author": {
+    "name": "Guilherme Nogueira",
+    "email": "guilhermenogueira90@gmail.com"
+  },
+  "license": "proprietary",
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.2",
+    "compression": "^1.6.2",
+    "cors": "^2.8.3",
+    "csurf": "^1.9.0",
+    "express": "^4.15.3",
+    "helmet": "^3.6.1",
+    "moment": "^2.18.1",
+    "mongoose": "^4.10.7",
+    "mongoose-unique-validator": "^1.0.5",
+    "morgan": "^1.8.2",
+    "validate.js": "0.11.1",
+    "validator": "^7.1.0"
+  }
+}
