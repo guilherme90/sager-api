@@ -25,6 +25,8 @@ const User = new Schema({
   password: {
     type: String,
     required: [true, 'A senha é obrigatória'],
+    bcrypt: true,
+    rounds: 10
   },
   active: {
     type: Boolean,
@@ -39,6 +41,7 @@ const User = new Schema({
     versionKey: false
 })
 
+User.plugin(require('mongoose-bcrypt'));
 User.plugin(require('mongoose-unique-validator'), MESSAGE_DEFAULT_UNIQUE)
 
 module.exports = mongoose.model('User', User)

@@ -9,6 +9,7 @@ const helmet = require('helmet')
 const cors = require('cors')
 const express = require('express')
 const app = express()
+const router = require('express').Router()
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
@@ -23,12 +24,9 @@ app.options('*', cors({
 /**
  * routes api
  */
-app.use('/api', require('./src/routes/UserRoutes'))
-//app.use('/api', require('./src/routes/AnamnesisCategoryRoutes'))
-//app.use('/api', require('./src/routes/SchedulingRoutes'))
+app.use('/api', require('./src/routes/UserRoutes')(router))
 
 app.get('*', (request, response) => {
-
   response.status(200).send({
       success: true,
       message: 'API initialized!'

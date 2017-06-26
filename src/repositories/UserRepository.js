@@ -12,9 +12,27 @@ const userRules = require('../filters/validator/rules/user')
 
 const UserRepository = {
   /**
-   * @returns {Promise}
+   * @return {Promise}
    */
-  findAllUsers() {
+  findAllUsers(query) {
+    if (query) {
+      return User
+        .find({
+          name: {
+            $regex: new RegExp(query.toUpperCase().trim()),
+            $options: 'i'
+          }
+        }, {
+          _id: true,
+          name: true,
+          email: true,
+          active: true
+        })
+        .sort({
+          name: SORT_ASCENDING
+        })
+    }
+
     return User
       .find()
       .sort({
@@ -23,18 +41,27 @@ const UserRepository = {
   },
 
   /**
+   * @param {String} id
+   * 
+   * @return {Promise}
+   */
+  findById(id) {
+    if (! isValidObjectId(id)) {
+      return Promise.reject(`Oops! Não encontramos nenhum usuário com o código "${id}"`)
+    }
+
+    return User.findById({_id: id})
+  },
+
+  /**
    * @param {Object} data
    * 
-   * @returns {Promise}
+   * @return {Promise}
    */
   add(data) {
     return validator(data, userRules.withoutPassword)
       .then((success, error) => error)
       .then(() => {
-        const salt = bcrypt.genSaltSync(10);
-        const hash = bcrypt.hashSync(data.password, salt);
-        data.password = hash
-        
         const UserSchema = new User(data)
 
         return UserSchema.save()
@@ -45,30 +72,41 @@ const UserRepository = {
    * @param {String} id 
    * @param {Object} data 
    * 
-   * @returns {Promise}
+   * @return {Promise}
    */
   update(id, data) {
     if (! isValidObjectId(id)) {
       return Promise.reject(`Oops! Não encontramos nenhum usuário com o código "${id}"`)
     }
 
-    let constraints = userRules.withoutPassword
+    const rules = userRules.withoutPassword
 
     if (isEmpty(data.password)) {
-      constraints = userRules.withPassword
+      rules = userRules.withPassword
     }
 
-    return validator(data, constraints)
+    return validator(data, rules)
       .then((success, error) => error)
       .then(() => {
-        if (! isEmpty(data.password)) {
-          const salt = bcrypt.genSaltSync(10);
-          const hash = bcrypt.hashSync(data.password, salt);
-          data.password = hash
+        if (data.password.length === 0) {
+          delete data.password
         }
 
         return User.findOneAndUpdate({_id: id}, {$set: data}, {new: true})
       })
+  },
+
+  /**
+   * @param {String} id
+   * 
+   * @return Promise
+   */
+  remove(id) {
+    if (! isValidObjectId(id)) {
+      return Promise.reject(`Oops! Não encontramos nenhum usuário com o código "${id}"`)
+    }
+
+    return User.findByIdAndRemove(id)
   }
 }
 
