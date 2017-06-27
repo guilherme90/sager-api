@@ -15,7 +15,7 @@ module.exports = (data, constraints) => {
     data, 
     constraints, 
     { 
-      fullMessages: false 
+      fullMessages: false
     }
   )
 }

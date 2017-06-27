@@ -5,11 +5,11 @@
   "main": "app.js",
   "private": true,
   "config": {
-    "port": 8010
+    "port": 5000
   },
   "scripts": {
     "start": "set DEBUG=http & nodemon index.js",
-    "test": "mocha"
+    "test": "mocha --recursive"
   },
   "author": {
     "name": "Guilherme Nogueira",

@@ -10,21 +10,25 @@ const bcrypt = require('bcrypt')
 const User = new Schema({
   name: {
     type: String,
-    required: [true, 'O nome é obrigatório'],
+    required: true,
     trim: true,
     unique: true,
     uppercase: true
   },
   email: {
     type: String,
-    required: [true, 'O email é obrigatório'],
+    required: true,
     trim: true,
     unique: true,
     lowercase: true
   },
+  userType: {
+    type: String,
+    required: true
+  },
   password: {
     type: String,
-    required: [true, 'A senha é obrigatória'],
+    required: true,
     bcrypt: true,
     rounds: 10
   },

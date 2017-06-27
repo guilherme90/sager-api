@@ -20,20 +20,14 @@ module.exports = (router) => {
     if (id) {
       return findById(id)
         .then(payload => {
-          response.status(200).send({
-            success: true,
-            data: payload
-          })
+          response.status(200).send(payload)
         })
         .catch(error => response.status(400).send(error.errors || error))
     }    
 
     findAllUsers(request.query.search)
       .then(payload => {
-        response.status(200).send({
-          success: true,
-          data: payload
-        })
+        response.status(200).send(payload)
       })
       .catch(error => response.status(400).send(error.errors || error))
   })

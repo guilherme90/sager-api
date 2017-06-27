@@ -17,9 +17,12 @@ app.use(compression())
 app.use(helmet())
 
 app.disable('x-powered-by')
-app.options('*', cors({
+
+const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE']
-}))
+}
+
+app.use('/api', cors(corsOptions))
 
 /**
  * routes api

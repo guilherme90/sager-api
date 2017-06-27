@@ -59,7 +59,7 @@ const UserRepository = {
    * @return {Promise}
    */
   add(data) {
-    return validator(data, userRules.withoutPassword)
+    return validator(data, userRules.withPassword)
       .then((success, error) => error)
       .then(() => {
         const UserSchema = new User(data)
