@@ -1,0 +1,29 @@
+{
+	"_id" : ObjectId("5955428508c6cb2338200c3a"),
+	"addresses" : [
+		{
+			"_id" : ObjectId("59554d2f7873d438acc435af"),
+			"city" : "Viçosa",
+			"state" : "Minas Gerais",
+			"complement" : "Casa",
+			"neighborhood" : "Fátima",
+			"number" : "Eça de Queiroz",
+			"address" : "Eça de Queiroz",
+			"created_at" : ISODate("2017-06-29T15:55:43.636-03:00")
+		},
+		{
+			"_id" : ObjectId("59554db8d9a8473bfcfb0422"),
+			"city" : "Viçosa",
+			"state" : "Minas Gerais",
+			"complement" : "Casa 2 up",
+			"neighborhood" : "Fátima 2 up",
+			"number" : "Eça de Queiroz 2 up",
+			"address" : "Eça de Queiroz 2 up",
+			"created_at" : ISODate("2017-06-29T15:58:00.754-03:00")
+		}
+	],
+	"cellphone" : "(31) 0000-0000",
+	"created_at" : ISODate("2017-06-29T15:10:13.394-03:00"),
+	"email" : "rosado.dryelly1@gmail.com",
+	"name" : "DRYELLY RODRIGUES ROSADO"
+},

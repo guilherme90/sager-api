@@ -2,8 +2,12 @@
   "name": "sager",
   "version": "1.0.0",
   "description": "API Sager",
-  "main": "app.js",
+  "main": "index.js",
   "private": true,
+  "repository": { 
+    "type" : "git",
+    "url" : "https://guilherme_90@bitbucket.org/guilherme90/sager-api.git"
+  },
   "config": {
     "port": 5000
   },

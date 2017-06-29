@@ -1,0 +1,27 @@
+{
+	"_id" : ObjectId("5953f0e270ad142f54334119"),
+	"active" : true,
+	"created_at" : ISODate("2017-06-28T15:09:38.476-03:00"),
+	"email" : "guilhermenogueira90@gmail.com",
+	"name" : "GUILHERME PEREIRA NOGUEIRA",
+	"password" : "$2a$10$r5nr60yg/JtnQ.ZEtSe0Xe5hWhB4XOndbSvhjOwCLvWl6mZ68/FF.",
+	"userType" : "Vendedor"
+},
+{
+	"_id" : ObjectId("5953f0fa70ad142f5433411a"),
+	"active" : true,
+	"created_at" : ISODate("2017-06-28T15:10:02.670-03:00"),
+	"email" : "gustavo.pereiranogueira@yahoo.com.br",
+	"name" : "GUSTAVO PEREIRA NOGUEIRA",
+	"password" : "$2a$10$tHUOS1GSdIxrluWS.ogokOODaM2UXdTQQjmqpwORTOV.U4cmpUqEi",
+	"userType" : "Administrativo"
+},
+{
+	"_id" : ObjectId("5953f10d70ad142f5433411b"),
+	"active" : true,
+	"created_at" : ISODate("2017-06-28T15:10:21.780-03:00"),
+	"email" : "clebsonsantiago@gmail.com",
+	"name" : "CLEBSON SANTIAGO",
+	"password" : "$2a$10$pUxYnxsPW6QqJqF/yUyJFenvZnVm8VDVOfQBt.wcZLkh5f1odKlhq",
+	"userType" : "Administrativo"
+},
