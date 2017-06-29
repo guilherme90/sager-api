@@ -2,7 +2,7 @@
  * @author Guilherme Nogueira <guilhermenogueira90@gmail.com>
  */
 
-const { addAddress, changeAddress } = require('../repositories/CustomerAddressRepository')
+const { findByAddressId, add, update, remove } = require('../repositories/CustomerAddressRepository')
 
 /**
  * @param {Router}
@@ -11,12 +11,24 @@ const { addAddress, changeAddress } = require('../repositories/CustomerAddressRe
  */
 module.exports = (router) => {
   /**
+   * GET /api/customers/:customerId/addresses/:addressId
+   */
+  router.get('/customers/:customerId/addresses/:addressId', (request, response) => {
+    const customerId = request.params.customerId
+    const addressId = request.params.addressId
+
+    findByAddressId(customerId, addressId)
+      .then(payload => response.status(200).send(payload))
+      .catch(error => response.status(400).send(error.errors || error))
+  })
+
+  /**
    * POST /api/customers/:customerId/addresses
    */
   router.post('/customers/:customerId/addresses', (request, response) => {
     const customerId = request.params.customerId
 
-    addAddress(customerId, request.body)
+    add(customerId, request.body)
       .then(payload => response.status(200).send(payload))
       .catch(error => response.status(400).send(error.errors || error))
   })
@@ -28,7 +40,19 @@ module.exports = (router) => {
     const customerId = request.params.customerId
     const addressId = request.params.addressId
 
-    changeAddress(customerId, addressId, request.body)
+    update(customerId, addressId, request.body)
+      .then(payload => response.status(200).send(payload))
+      .catch(error => response.status(400).send(error.errors || error))
+  })
+
+  /**
+   * DELETE api/customers/:customerId/addresses/:addressId
+   */
+  router.delete('/customers/:customerId/addresses/:addressId', (request, response) => {
+    const customerId = request.params.customerId
+    const addressId = request.params.addressId
+
+    remove(customerId, addressId)
       .then(payload => response.status(200).send(payload))
       .catch(error => response.status(400).send(error.errors || error))
   })

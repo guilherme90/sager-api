@@ -11,11 +11,33 @@ const addressRules = require('../filters/validator/rules/customer-address')
 const CustomerAddressRepository = {
   /**
    * @param {String} customerId
+   * @param {String} addressId
+   * 
+   * @return {Promise}
+   */
+  findByAddressId(customerId, addressId) {
+    if (! isValidObjectId(customerId)) {
+      return Promise.reject(`Oops! O código "${customerId}" informado é inválido.`)
+    }
+
+    if (! isValidObjectId(addressId)) {
+      return Promise.reject(`Oops! O código "${customerId}" informado é inválido.`)
+    }
+
+    return Customer.findOne({
+      'addresses._id': addressId
+    }, {
+      'addresses.$': true
+    })
+  },
+
+  /**
+   * @param {String} customerId
    * @param {Object} data
    * 
    * @return {Promise}
    */
-  addAddress(customerId, data) {
+  add(customerId, data) {
     if (! isValidObjectId(customerId)) {
       return Promise.reject(`Oops! O código "${customerId}" informado é inválido.`)
     }
@@ -39,7 +61,7 @@ const CustomerAddressRepository = {
    * 
    * @return {Promise}
    */
-  changeAddress(customerId, addressId, data) {
+  update(customerId, addressId, data) {
     if (! isValidObjectId(customerId)) {
       return Promise.reject(`Oops! O código "${customerId}" informado é inválido.`)
     }
@@ -70,6 +92,36 @@ const CustomerAddressRepository = {
         )
       })
   },
+
+  /**
+   * @param {String} customerId
+   * @param {String} addressId
+   * 
+   * @return Promise
+   */
+  remove(customerId, addressId) {
+    if (! isValidObjectId(customerId)) {
+      return Promise.reject(`Oops! O código "${customerId}" informado é inválido.`)
+    }
+
+    if (! isValidObjectId(addressId)) {
+      return Promise.reject(`Oops! O código "${customerId}" informado é inválido.`)
+    }
+
+    return Customer.findOneAndUpdate({
+      _id: customerId,
+      'addresses._id': addressId
+    }, {
+      $pull: {
+        addresses: {
+          _id: addressId
+        }
+      }
+    }, {
+      multi: true,
+      new: true
+    })
+  }
 }
 
 module.exports = CustomerAddressRepository

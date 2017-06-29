@@ -14,7 +14,7 @@ const CustomerRepository = {
    * 
    * @return {Promise}
    */
-  findAlCustomers(query) {
+  findAllCustomers(query) {
     if (query) {
       return Customer
         .find({

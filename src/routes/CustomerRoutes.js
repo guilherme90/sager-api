@@ -2,7 +2,7 @@
  * @author Guilherme Nogueira <guilhermenogueira90@gmail.com>
  */
 
-const { findAlCustomers, findById, add, update, remove } = require('../repositories/CustomerRepository')
+const { findAllCustomers, findById, add, update, remove } = require('../repositories/CustomerRepository')
 
 /**
  * @param {Router}
@@ -22,7 +22,7 @@ module.exports = (router) => {
         .catch(error => response.status(400).send(error.errors || error))
     }    
 
-    findAlCustomers(request.query.search)
+    findAllCustomers(request.query.search)
       .then(payload => response.status(200).send(payload))
       .catch(error => response.status(400).send(error.errors || error))
   })
