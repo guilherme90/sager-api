@@ -5,13 +5,14 @@
 const {SORT_ASCENDING, SORT_DESCENDING} = require('../filters/constants')
 const User = require('../schemas/User')
 const isValidObjectId = require('../db/isValidObjectId')
-const bcrypt = require('bcrypt')
 const validator = require('../filters/validator/validator')
-const isEmpty = require('validator/lib/isEmail');
+const validate = require('validate.js')
 const userRules = require('../filters/validator/rules/user')
 
 const UserRepository = {
   /**
+   * @param {String|undefined} query
+   * 
    * @return {Promise}
    */
   findAllUsers(query) {
@@ -81,7 +82,7 @@ const UserRepository = {
 
     const rules = userRules.withoutPassword
 
-    if (isEmpty(data.password)) {
+    if (!validate.isEmpty(data.password)) {
       rules = userRules.withPassword
     }
 

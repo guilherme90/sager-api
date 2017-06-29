@@ -5,7 +5,7 @@
 const { MESSAGE_REQUIRE_FIELD } = require('../../constants')
 
 /**
- * @returns {Object}
+ * @return {Object}
  */
 module.exports = {
   withPassword: {

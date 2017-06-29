@@ -8,7 +8,7 @@ const validate = require('validate.js')
  * @param {Object} data
  * @param {Object} constraints
  * 
- * @returns {Promise}
+ * @return {Promise}
  */
 module.exports = (data, constraints) => {
   return validate.async(

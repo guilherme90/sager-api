@@ -28,6 +28,9 @@ app.use('/api', cors(corsOptions))
  * routes api
  */
 app.use('/api', require('./src/routes/UserRoutes')(router))
+app.use('/api', require('./src/routes/CustomerRoutes')(router))
+app.use('/api', require('./src/routes/CustomerAddressRoutes')(router))
+app.use('/api', require('./src/routes/CityRoutes')(router))
 
 app.get('*', (request, response) => {
   response.status(200).send({

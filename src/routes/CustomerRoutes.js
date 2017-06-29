@@ -2,7 +2,7 @@
  * @author Guilherme Nogueira <guilhermenogueira90@gmail.com>
  */
 
-const { findAllUsers, findById, add, update, remove } = require('../repositories/UserRepository')
+const { findAlCustomers, findById, add, update, remove } = require('../repositories/CustomerRepository')
 
 /**
  * @param {Router}
@@ -11,9 +11,9 @@ const { findAllUsers, findById, add, update, remove } = require('../repositories
  */
 module.exports = (router) => {
   /**
-   * GET /api/users
+   * GET /api/customers
    */
-  router.get('/users/:id?', (request, response) => {
+  router.get('/customers/:id?', (request, response) => {
     const id = request.params.id
 
     if (id) {
@@ -22,24 +22,24 @@ module.exports = (router) => {
         .catch(error => response.status(400).send(error.errors || error))
     }    
 
-    findAllUsers(request.query.search)
+    findAlCustomers(request.query.search)
       .then(payload => response.status(200).send(payload))
       .catch(error => response.status(400).send(error.errors || error))
   })
 
   /**
-   * POST /api/users
+   * POST /api/customers
    */
-  router.post('/users', (request, response) => {
+  router.post('/customers', (request, response) => {
     add(request.body)
-     .then(payload => response.status(200).send(payload))
+      .then(payload => response.status(200).send(payload))
       .catch(error => response.status(400).send(error.errors || error))
   })
 
   /**
-   * PUT /api/users
+   * PUT /api/customers
    */
-  router.put('/users/:id', (request, response) => {
+  router.put('/customers/:id', (request, response) => {
     const id = request.params.id
 
     update(id, request.body)
@@ -48,9 +48,9 @@ module.exports = (router) => {
   })
 
   /**
-   * DELETE /api/users
+   * DELETE /api/customers
    */
-  router.delete('/users/:id', (request, response) => {
+  router.delete('/customers/:id', (request, response) => {
     remove(request.params.id)
       .then(payload => response.status(200).send(payload))
       .catch(error => response.status(400).send(error.errors || error))

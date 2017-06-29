@@ -3,11 +3,11 @@
  */
 
 const mongoose = require('../db/mongodb')
-const Schema = mongoose.Schema;
-const {MESSAGE_DEFAULT_UNIQUE} = require('../filters/constants')
-const bcrypt = require('bcrypt')
+const Schema = mongoose.Schema
+const { MESSAGE_DEFAULT_UNIQUE } = require('../filters/constants')
+const CustomerAddress = require('./CustomerAddress')
 
-const User = new Schema({
+const Customer = new Schema({
   name: {
     type: String,
     required: true,
@@ -24,30 +24,26 @@ const User = new Schema({
     index: true,
     lowercase: true
   },
-  userType: {
+  telephone: {
     type: String,
-    required: true
+    trim: true,
+    default: null
   },
-  password: {
+  cellphone: {
     type: String,
     required: true,
-    bcrypt: true,
-    rounds: 10
+    trim: true
   },
-  active: {
-    type: Boolean,
-    default: true
-  },
+  addresses: [CustomerAddress],
   created_at: {
     type: Date,
     default: Date.now
   }
 },{
-    collection: 'usuario',
+    collection: 'cliente',
     versionKey: false
 })
 
-User.plugin(require('mongoose-bcrypt'));
-User.plugin(require('mongoose-unique-validator'), MESSAGE_DEFAULT_UNIQUE)
+Customer.plugin(require('mongoose-unique-validator'), MESSAGE_DEFAULT_UNIQUE)
 
-module.exports = mongoose.model('User', User)
+module.exports = mongoose.model('Customer', Customer)
