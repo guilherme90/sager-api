@@ -24,11 +24,13 @@ const CustomerAddressRepository = {
       return Promise.reject(`Oops! O código "${customerId}" informado é inválido.`)
     }
 
-    return Customer.findOne({
-      'addresses._id': addressId
-    }, {
-      'addresses.$': true
-    })
+    return Customer.findOne(
+      {
+        'addresses._id': addressId
+      }, {
+        'addresses.$': true
+      }
+    )
   },
 
   /**
@@ -46,11 +48,14 @@ const CustomerAddressRepository = {
       .then((success, error) => error)
       .then(() => {
         return Customer.findOneAndUpdate(
-          {_id: customerId}, 
           {
+            _id: customerId
+          },{
             $push: { addresses: data }
-          }, 
-          {new: true})
+          },{
+            new: true
+          }
+        )
       })
   },
 

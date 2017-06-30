@@ -33,8 +33,10 @@ const CustomerRepository = {
           ]
         })
         .sort({
-          name: SORT_ASCENDING
+          name: SORT_ASCENDING,
+          created_at: SORT_DESCENDING
         })
+        .limit(10)
     }
 
     return Customer
@@ -54,7 +56,7 @@ const CustomerRepository = {
       return Promise.reject(`Oops! O código "${customerId}" informado é inválido.`)
     }
 
-    return User.findById({_id: id})
+    return Customer.findById({_id: id})
   },
 
   /**

@@ -48,7 +48,7 @@ const UserRepository = {
    */
   findById(id) {
     if (! isValidObjectId(id)) {
-      return Promise.reject(`Oops! Não encontramos nenhum usuário com o código "${id}"`)
+      return Promise.reject(`Oops! O código "${id}" informado é inválido.`)
     }
 
     return User.findById({_id: id})
@@ -77,7 +77,7 @@ const UserRepository = {
    */
   update(id, data) {
     if (! isValidObjectId(id)) {
-      return Promise.reject(`Oops! Não encontramos nenhum usuário com o código "${id}"`)
+      return Promise.reject(`Oops! O código "${id}" informado é inválido.`)
     }
 
     const rules = userRules.withoutPassword
@@ -104,7 +104,7 @@ const UserRepository = {
    */
   remove(id) {
     if (! isValidObjectId(id)) {
-      return Promise.reject(`Oops! Não encontramos nenhum usuário com o código "${id}"`)
+      return Promise.reject(`Oops! O código "${id}" informado é inválido.`)
     }
 
     return User.findByIdAndRemove(id)
