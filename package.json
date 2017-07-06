@@ -4,9 +4,9 @@
   "description": "API Sager",
   "main": "index.js",
   "private": true,
-  "repository": { 
-    "type" : "git",
-    "url" : "https://guilherme_90@bitbucket.org/guilherme90/sager-api.git"
+  "repository": {
+    "type": "git",
+    "url": "https://guilherme_90@bitbucket.org/guilherme90/sager-api.git"
   },
   "config": {
     "port": 5000
@@ -41,6 +41,7 @@
     "helmet": "^3.6.1",
     "moment": "^2.18.1",
     "mongoose": "^4.10.7",
+    "mongoose-aliasfield": "^0.3.7",
     "mongoose-bcrypt": "^1.5.0",
     "mongoose-unique-validator": "^1.0.5",
     "morgan": "^1.8.2",
