@@ -20,13 +20,13 @@ module.exports = (router) => {
   })
 
   /**
-   * GET /api/states/:uf/cities
+   * GET /api/states/:ufId/cities
    */
-  router.get('/states/:uf/cities', (request, response) => {
-    const uf = request.params.uf
+  router.get('/states/:ufId/cities', (request, response) => {
+    const ufId = request.params.ufId
     const query = request.query.search
 
-    findCitiesFromUf(uf, query)
+    findCitiesFromUf(ufId, query)
       .then(payload => {
         if (payload.length === 0) {
           response.status(200).send(`Oopz! Nenhuma cidade encontrada do estado "${uf}"`)

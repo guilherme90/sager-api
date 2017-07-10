@@ -32,9 +32,15 @@ const CustomerAddress = new Schema({
     uppercase: true
   },
   state: {
-    type: String,
-    required: true,
-    trim: true,
+    name: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    id: {
+      type: Number,
+      trim: true
+    }
   },
   city: {
     type: String,

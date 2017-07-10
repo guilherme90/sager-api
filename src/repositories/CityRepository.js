@@ -23,17 +23,17 @@ const CityRepository = {
   },
 
   /**
-   * @param {Number} uf 
+   * @param {Number} ufId 
    * @param {String} query
    * 
    * @return {Promise}
    */
-  findCitiesFromUf(uf, query) {
+  findCitiesFromUf(ufId, query) {
     if (query.length >= 2) {
       return City
         .find({
           uf: {
-            cod_uf: uf
+            cod_uf: ufId
           },
           nome: {
             $regex: new RegExp(query.toUpperCase().trim()),
