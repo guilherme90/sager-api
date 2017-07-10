@@ -4,13 +4,14 @@
 
 const { SORT_ASCENDING, SORT_DESCENDING } = require('../filters/constants')
 const City = require('../schemas/City')
+const State = require('../schemas/State')
 
 const CityRepository = {
   /**
    * @return {Promise}
    */
   findAllStates() {
-    return City
+    return State
       .find({}, { 
         uf: true,
         sigla_uf: true,
@@ -30,18 +31,20 @@ const CityRepository = {
   findCitiesFromUf(uf, query) {
     if (query.length >= 2) {
       return City
-      .find({
-        sigla_uf: uf,
-        'cidades.nome_municipio': {
-          $regex: new RegExp(query),
-          $options: 'im'
-        }
-      },{
-        'cidades.$': true
-      })
-      .sort({
-        nome_uf: SORT_ASCENDING
-      })
+        .find({
+          uf: {
+            cod_uf: uf
+          },
+          nome: {
+            $regex: new RegExp(query.toUpperCase().trim()),
+            $options: 'i'
+          }
+        }, {
+          nome: true
+        })
+        .sort({
+          nome: SORT_ASCENDING
+        })
     }
 
     return Promise.reject('Oops! É necessário informar no mínimo 2 letras para buscar as cidades.')
