@@ -29,7 +29,7 @@ module.exports = (router) => {
     findCitiesFromUf(ufId, query)
       .then(payload => {
         if (payload.length === 0) {
-          response.status(200).send(`Oopz! Nenhuma cidade encontrada do estado "${uf}"`)
+          response.status(404).send(`Oopz! Nenhuma cidade encontrada do estado "${ufId}"`)
         }
 
         response.status(200).send(payload)
