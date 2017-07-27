@@ -30,6 +30,7 @@ app.use('/api', cors(corsOptions))
 app.use('/api', require('./src/routes/UserRoutes')(router))
 app.use('/api', require('./src/routes/CustomerRoutes')(router))
 app.use('/api', require('./src/routes/CustomerAddressRoutes')(router))
+app.use('/api', require('./src/routes/inspection/InspectionRoutes')(router))
 app.use('/api', require('./src/routes/CityRoutes')(router))
 
 app.get('*', (request, response) => {

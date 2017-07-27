@@ -66,7 +66,7 @@ const Inspection = new Schema({
       default: Date.now
     },
   }],
-  measures: {
+  measures: [{
     typeMeasure: {
       type: String,
       required: true,
@@ -127,7 +127,7 @@ const Inspection = new Schema({
       min: 0,
       default: 0
     }
-  },
+  }],
   created_at: {
     type: Date,
     default: Date.now
