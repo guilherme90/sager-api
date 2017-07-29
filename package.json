@@ -12,7 +12,8 @@
     "port": 5000
   },
   "scripts": {
-    "start": "set DEBUG=http & nodemon index.js",
+    "start": "node index.js",
+    "dev": "set DEBUG=http & nodemon index.js",
     "test": "mocha --recursive"
   },
   "author": {
