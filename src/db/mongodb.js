@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/sager', options)
+mongoose.connect(url, options)
 mongoose.set('debug', true)
 
 module.exports = mongoose;
