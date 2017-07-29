@@ -2,7 +2,10 @@
  * @author Guilherme Nogueira <guilhermenogueira90@gmail.com>
  */
 
-const PORT = process.env.npm_package_config_port;
+
+const PORT = process.env.NODE_ENV === 'production' 
+  ? process.env.PORT 
+  : process.env.npm_package_config_port;
 const bodyParser = require('body-parser')
 const compression = require('compression')
 const helmet = require('helmet')
