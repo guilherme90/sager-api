@@ -12,7 +12,7 @@
     "port": 5000
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "NODE_ENV=production && node index.js",
     "dev": "set DEBUG=http & nodemon index.js",
     "test": "mocha --recursive"
   },

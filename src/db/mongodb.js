@@ -37,6 +37,12 @@ process.on('SIGINT', () => {
     })
 })
 
+const url = 'mongodb://localhost/sager'
+
+if (process.env.NODE_ENV === 'production') {
+    url = 'mongodb://<sager>:<sager_1234>@ds129013.mlab.com:29013/sager'
+}
+
 mongoose.Promise = global.Promise
 mongoose.connect('mongodb://localhost/sager', options)
 mongoose.set('debug', true)
