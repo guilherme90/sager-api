@@ -12,8 +12,8 @@
     "port": 5000
   },
   "scripts": {
+    "dev": "set DEBUG=http && cross-env NODE_ENV=development && nodemon index.js",
     "start": "NODE_ENV=production && node index.js",
-    "dev": "set DEBUG=http && NODE_ENV=development && nodemon index.js",
     "test": "mocha --recursive"
   },
   "author": {
@@ -37,6 +37,7 @@
     "body-parser": "^1.17.2",
     "compression": "^1.6.2",
     "cors": "^2.8.3",
+    "cross-env": "^5.0.1",
     "csurf": "^1.9.0",
     "express": "^4.15.3",
     "helmet": "^3.6.1",

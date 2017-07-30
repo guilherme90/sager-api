@@ -2,7 +2,6 @@
  * @author Guilherme Nogueira <guilhermenogueira90@gmail.com>
  */
 
-
 const PORT = process.env.NODE_ENV === 'production' 
   ? process.env.PORT 
   : process.env.npm_package_config_port;
